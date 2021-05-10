@@ -1,4 +1,5 @@
 from matplotlib import markers
+import matplotlib
 import requests
 import matplotlib.pyplot as plt
 import matplotlib.ticker as mticker  
@@ -36,7 +37,7 @@ async def main(ctx, args):
     vol = []
     cap = []
 
-    pot = 0
+    #pot = 0
 
     for x in data['prices']:
         price.append(x[1])
@@ -45,8 +46,8 @@ async def main(ctx, args):
     for x in data['total_volumes']:
         kek = x[1]
 
-        pot = np.floor(np.log10(kek))
-        kek = kek / 10**pot
+        # pot = np.floor(np.log10(kek))
+        # kek = kek / 10**pot
 
         vol.append(kek)
 
@@ -97,8 +98,6 @@ async def main(ctx, args):
     for place, item in enumerate(derv):
         derv[place] = np.diff(price).tolist().index(item)
 
-    plt.rc('text', usetex=True)
-
     #---------------------------------------------------------------------------
     ax3.plot(date, vol, color="tomato", linewidth=0.5, zorder=0, label="Volume" )
     ax3.set_ylabel("", color="tomato",fontsize=14)
@@ -110,7 +109,7 @@ async def main(ctx, args):
 
     ax.plot(date, price, color="cornflowerblue", linewidth=0.7, label="Preis")
     ax.set_ylabel("", color="cornflowerblue", fontsize=14)
-    ax.get_yaxis().set_major_formatter(mticker.FormatStrFormatter('%.2f €'))
+    ax.get_yaxis().set_major_formatter(mticker.FormatStrFormatter("%i €"))
     ax.grid(b=True, which='both', linestyle="--", linewidth=0.3)
 
 
@@ -123,9 +122,10 @@ async def main(ctx, args):
 
     for p in poi:
         ax.plot(date[p], price[p], color="darkorange", marker=".")
-        ax.text(date[p], price[p], str(np.around(price[p],2))+"€")
+        ax.text(date[p], price[p], str(np.around(price[p],2))+" €")
 
-    ax3.get_yaxis().set_major_formatter(mticker.FormatStrFormatter("$%i " + "\cdot 10^{%i} \euro$" % pot))
+    #ax3.get_yaxis().set_major_formatter(mticker.FuncFormatter(lambda x, p: format(int(x), '.')))
+    ax3.get_yaxis().set_major_formatter(mticker.FuncFormatter(lambda x, p : f"{int(x):,}".replace(",",".") + " €"))
     ax3.get_xaxis().set_major_formatter(mdates.DateFormatter('%d.%m.%y'))
 
     #---------------------------------------------------------------------------
