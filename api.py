@@ -109,7 +109,7 @@ async def main(ctx, args):
 
     ax.plot(date, price, color="cornflowerblue", linewidth=0.7, label="Preis")
     ax.set_ylabel("", color="cornflowerblue", fontsize=14)
-    ax.get_yaxis().set_major_formatter(mticker.FormatStrFormatter("%i €"))
+    ax.get_yaxis().set_major_formatter(mticker.FormatStrFormatter("%.2f €"))
     ax.grid(b=True, which='both', linestyle="--", linewidth=0.3)
 
 
