@@ -20,5 +20,6 @@ async def on_command_error(ctx, error):
 @bot.event
 async def on_ready():
     print("READY")
+    await bot.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name="seinem Geld beim wachsen zu"))
 
 bot.run(TOKEN)
