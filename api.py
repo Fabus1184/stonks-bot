@@ -139,5 +139,5 @@ async def main(ctx, args):
     # ..........................................................................
 
     
-    await ctx.send(file=discord.File("tmp.png"))
+    await ctx.send("%s" % ctx.message.author.mention, file=discord.File("tmp.png"))
 
