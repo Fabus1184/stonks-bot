@@ -80,13 +80,13 @@ async def main(ctx, args):
         color = "red"
 
     n = 1
-    poi = np.array([])
-    poi = np.append(poi, np.sort((price))[0:n])
-    poi = np.append(poi, np.sort((price))[-n:])
+    # poi = np.array([])
+    # poi = np.append(poi, np.sort((price))[0:n])
+    # poi = np.append(poi, np.sort((price))[-n:])
 
-    poi = poi.tolist()
-    for place, item in enumerate(poi):
-        poi[place] = price.index(item)
+    # poi = poi.tolist()
+    # for place, item in enumerate(poi):
+    #     poi[place] = price.index(item)
 
 
     n = 3
@@ -120,9 +120,9 @@ async def main(ctx, args):
     # for p in derv:
     #     ax.plot(date[p], price[p], marker=".", color="gold")
 
-    for p in poi:
-        ax.plot(date[p], price[p], color="darkorange", marker=".")
-        ax.text(date[p], price[p], str(np.around(price[p],2))+" €")
+    # for p in poi:
+    #     ax.plot(date[p], price[p], color="darkorange", marker=".")
+    #     ax.text(date[p], price[p], str(np.around(price[p],2))+" €")
 
     #ax3.get_yaxis().set_major_formatter(mticker.FuncFormatter(lambda x, p: format(int(x), '.')))
     ax3.get_yaxis().set_major_formatter(mticker.FuncFormatter(lambda x, p : f"{int(x):,}".replace(",",".") + " €"))
