@@ -115,7 +115,7 @@ plt.clf()
 
 # ..........................................................................
 
-url = "https://discord.com/api/webhooks/841014352899211304/tvk7zRL9n9r8HsPL8KvVoF5V7HZxVYa5PcZ-3l_1p6PioJ26d5pw3pvzyBAvdCvaDr5p"
+url = wbhk_url
 
 webhook = DiscordWebhook(url=url)
 
